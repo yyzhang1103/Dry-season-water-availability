@@ -1,9 +1,9 @@
 This repository contains Matlab codes to reproduce the main figures of the paper “Non-biological evaporation dominates future intensification of global dry-season water scarcity”. 
 
-Author: Yangyang Zhang, Jianzhi Dong*, Dashan Wang, Shao Wei, Lingna Wei, Man Gao
+Author: Yangyang Zhang, Dashan Wang, Lan Wang-Erlandsson, Shao Wei, Lingna Wei, Man Gao, Jianzhi Dong*
 
 ## Abstract
-Dry-season water availability (Wd) is projected to decline under global warming, yet its physical drivers remain poorly constrained. This uncertainty arises in part because evapotranspiration (ET) is commonly treated as a bulk flux, obscuring the contrasting responses of biological transpiration (T) and non-biological evaporation (E, including soil and canopy interception evaporation) to climate change. Here we quantify the contributions of precipitation (P), T, and E to changes in Wd under different emission scenarios. We find that Wd declines across more than 80% of non-glacierized land by 2100, with a global mean reduction of 2.00–2.48 mm month⁻¹. This widespread drying is driven predominantly by thermodynamic intensification of E rather than by P deficits or vegetation-induced T changes. Based on an energy balance framework, we show that future increases in E are progressively dominated by warming enhanced evaporative efficiency, which overrides the effects of soil moisture limitation and greening-induced surface shading. Relative to the historical conditions, future dry-season hydrological controls will likely shift from biologically regulated T to thermodynamically enhanced E. This implies that ecosystem-based adaptation strategies may face intrinsic limits in mitigating future water scarcity under continued warming.
+Dry-season water availability (Wd), defined as the annual minimum of monthly precipitation minus evapotranspiration (P–ET), is projected to decline under global warming, yet its physical drivers remain poorly constrained. A key source of this uncertainty is the common treatment of evapotranspiration (ET) as a bulk flux, which obscures the contrasting responses of biological transpiration (T) and non-biological evaporation (E) to climate change. Here we develop a process-based attribution framework, evaluated with observations from 178 FLUXNET sites and applied to CMIP6 simulations, to quantify the contributions of precipitation (P), T, and E to future Wd variations under different emission scenarios. We find that Wd will decline across more than 80% of non-glacierized land by 2100 under both SSP2-4.5 and SSP5-8.5 scenarios. This widespread drying is increasingly driven by intensification of non-biological E rather than by P deficits or vegetation-driven changes in T. Further decomposition shows that this E increase is dominated by widespread intensification of soil evaporation (Eₛ), driven by warming-enhanced evaporative efficiency. These results reveal a fundamental shift toward thermodynamically controlled dry-season drying, in which warming-driven amplification of Eₛ emerges as the dominant mechanism reducing future Wd. This implies that adaptation strategies focused on regulating water consumption through T may become increasingly insufficient. Future adaptation should also address the growing contribution of Es to dry-season water loss.
 
 ## Content 
 
@@ -12,6 +12,6 @@ FigureS*.m reproduce the corresponding supplementary figures of the paper.
 All analyses were conducted using Matlab (R2024a).
 
 ## Reference
-Zhang Y.Y., Dong J.Z., Wang D.S., Shao W., Wei L.N., Gao M., Non-biological evaporation dominates future intensification of global dry-season water scarcity (2026)
+Zhang Y.Y., Wang D.S., Wang-Erlandsson L., Shao W., Wei L.N., Gao M., Dong J.Z., Non-biological evaporation dominates future intensification of global dry-season water scarcity (2026)
 
 
