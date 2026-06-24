@@ -2,7 +2,9 @@
 
 clear
 
-load .\cmip\his_ssp_mat_data_land\Figure1.mat
+
+load Figure1.mat
+
 
 
 
@@ -39,7 +41,7 @@ xlabel('Year');
 ylabel('ΔW_d (mm month^{-1})');
 ylim([-8, 4]); 
 
-grid on;
+grid off;
 set(gca, 'GridLineStyle', '--','LineWidth', 1);
 set(gca, 'GridAlpha', 0.2);
 
@@ -88,7 +90,7 @@ xlabel('Year');
 ylabel('ΔW_d (mm month^{-1})');
 ylim([-8, 4]); 
 
-grid on;
+grid off;
 set(gca, 'GridLineStyle', '--','LineWidth', 1);
 set(gca, 'GridAlpha', 0.2);
 
@@ -108,15 +110,15 @@ set(h2, 'YTick', [-8, -4, 0, 4],  'XTick', [2015, 2040, 2060, 2080, 2100], 'Font
 
 % 
 
-load ..\E\cmip\his_ssp_mat_data_land\model_his_future_driest.mat
+%load ..\E\cmip\his_ssp_mat_data_land\model_his_future_driest.mat
 
 %
-dif_wa_245_his = wa_245_mean -wa_his_mean;
-[mean_dif_245_his_1, p_dif_245_his, sig_dif_245_his] = cal_sig(dif_wa_245_his);
-
-dif_wa_585_his = wa_585_mean - wa_his_mean;
-[mean_dif_585_his_1, p_dif_585_his, sig_dif_585_his] = cal_sig(dif_wa_585_his);
-
+% dif_wa_245_his = wa_245_mean -wa_his_mean;
+% [mean_dif_245_his_1, p_dif_245_his, sig_dif_245_his] = cal_sig(dif_wa_245_his);
+% 
+% dif_wa_585_his = wa_585_mean - wa_his_mean;
+% [mean_dif_585_his_1, p_dif_585_his, sig_dif_585_his] = cal_sig(dif_wa_585_his);
+% 
 %  (c) 245                                                                                              
 h3 = axes('Position', [-0.02,0.43,1,0.34]);   
 title('(c) ΔW_d under SSP2-4.5', 'FontSize',13, 'FontWeight','bold');
@@ -343,33 +345,30 @@ xlabel(c3, 'mm month^{-1}', 'FontSize', 9);
 
 
 
+
+
 %                                          
+
 varNames = {'\DeltaW_d', '\DeltaP', '\DeltaT', '\DeltaE_s', '\DeltaE_i'};
 scenarioLabels = {'Wa', 'P', 'T', 'E_{soi}', 'E_{veg}'};
-barColors = {[138, 119, 185]/255}; 
-barAlpha = 0.6;       
-scatterAlpha = 0.6;   
-scatterSize = 40;     
+barColors = {[138, 119, 185]/255}; % 红色(245), 蓝色(585)
 
-                                      
-%                                          
-means = zeros(1, 5); 
-stds = zeros(1, 5);
+% 设置透明度参数
+barAlpha = 0.6;       % 柱状图透明度 (0-1，1为不透明)
+scatterAlpha = 0.6;   % 散点图透明度 (0-1，1为不透明)
+scatterSize = 40;     % 散点大小
 
-means(1,:) = nanmean(eachmodel_means_245_his_na, 2);  
-stds(1,:) = nanstd(eachmodel_means_245_his_na, 0, 2);  
 
-% 
 h5 = axes('Position', [0.03,0.69,0.11,0.08]);
 
-barHandle = bar(means', 'BarWidth', 0.6); 
+barHandle = bar(means_na_245', 'BarWidth', 0.6); 
 hold on;
 
 barHandle.FaceColor = barColors{1}; 
 barHandle.FaceAlpha = barAlpha;  
 xPositions = barHandle.XEndPoints;
 for i = 1:5  
-    errorbar(xPositions(i), means(1,i), stds(1,i), '.k', 'LineWidth', 1);
+    errorbar(xPositions(i), means_na_245(1,i), stds_na_245(1,i), '.k', 'LineWidth', 1);
 end
 set(gca, 'XTick', 1:length(varNames), 'XTickLabel', varNames);
 xlim([0.5, 5.5]);  
@@ -404,16 +403,11 @@ title('Northern North America','FontSize', 6,  'FontWeight', 'bold');
                                        
 %
 
-means = zeros(1, 5);  
-stds = zeros(1, 5);
-
-means(1,:) = nanmean(eachmodel_means_585_his_na, 2);  
-stds(1,:) = nanstd(eachmodel_means_585_his_na, 0, 2);  
 
 %
 h6 = axes('Position', [0.03,0.31,0.11,0.08]);
 
-barHandle = bar(means', 'BarWidth', 0.6); 
+barHandle = bar(means_na_585', 'BarWidth', 0.6); 
 hold on;
 
 barHandle.FaceColor = barColors{1};  
@@ -422,7 +416,7 @@ barHandle.FaceAlpha = barAlpha;
 xPositions = barHandle.XEndPoints;
 
 for i = 1:5  
-    errorbar(xPositions(i), means(1,i), stds(1,i), '.k', 'LineWidth', 1);
+    errorbar(xPositions(i), means_na_585(1,i), stds_na_585(1,i), '.k', 'LineWidth', 1);
 end
 
 set(gca, 'XTick', 1:length(varNames), 'XTickLabel', varNames);
@@ -458,22 +452,17 @@ title('Northern North America','FontSize', 6,  'FontWeight', 'bold');
 
 %
 
-means = zeros(1, 5); 
-stds = zeros(1, 5);
-means(1,:) = nanmean(eachmodel_means_245_his_caf, 2);  
-stds(1,:) = nanstd(eachmodel_means_245_his_caf, 0, 2);  
-
 %
 h7 = axes('Position', [0.32,0.6,0.11,0.08]);
 
-barHandle = bar(means', 'BarWidth', 0.6); 
+barHandle = bar(means_caf_245', 'BarWidth', 0.6); 
 hold on;
 
 barHandle.FaceColor = barColors{1};  
 barHandle.FaceAlpha = barAlpha;  
 xPositions = barHandle.XEndPoints;
 for i = 1:5  
-    errorbar(xPositions(i), means(1,i), stds(1,i), '.k', 'LineWidth', 1);
+    errorbar(xPositions(i), means_caf_245(1,i), stds_caf_245(1,i), '.k', 'LineWidth', 1);
 end
 
 set(gca, 'XTick', 1:length(varNames), 'XTickLabel', varNames);
@@ -509,22 +498,15 @@ title('Central eastern Africa','FontSize', 6,  'FontWeight', 'bold');
 
                                        
 %
-
-means = zeros(1, 5); 
-stds = zeros(1, 5);
-means(1,:) = nanmean(eachmodel_means_585_his_caf, 2);  
-stds(1,:) = nanstd(eachmodel_means_585_his_caf, 0, 2);  
-
-%
 h8 = axes('Position', [0.33,0.22,0.11,0.08]);
-barHandle = bar(means', 'BarWidth', 0.6); 
+barHandle = bar(means_caf_585', 'BarWidth', 0.6); 
 hold on;
 
 barHandle.FaceColor = barColors{1};  
 barHandle.FaceAlpha = barAlpha;  
 xPositions = barHandle.XEndPoints;
 for i = 1:5  
-    errorbar(xPositions(i), means(1,i), stds(1,i), '.k', 'LineWidth', 1);
+    errorbar(xPositions(i), means_caf_585(1,i), stds_caf_585(1,i), '.k', 'LineWidth', 1);
 end
 set(gca, 'XTick', 1:length(varNames), 'XTickLabel', varNames);
 xlim([0.5, 5.5]);  
@@ -555,19 +537,12 @@ title('Central eastern Africa','FontSize', 6,  'FontWeight', 'bold');
 
 
 
-%
-means = zeros(1, 5);  
-stds = zeros(1, 5);
-
-means(1,:) = nanmean(eachmodel_means_245_his_saf, 2); 
-
-stds(1,:) = nanstd(eachmodel_means_245_his_saf, 0, 2);  
 
 %
 h9 = axes('Position', [0.39,0.45,0.11,0.08]);
 
 
-barHandle = bar(means', 'BarWidth', 0.6); 
+barHandle = bar(means_saf_245', 'BarWidth', 0.6); 
 hold on;
 
 
@@ -577,7 +552,7 @@ barHandle.FaceAlpha = barAlpha;
 xPositions = barHandle.XEndPoints;
 
 for i = 1:5  
-    errorbar(xPositions(i), means(1,i), stds(1,i), '.k', 'LineWidth', 1);
+    errorbar(xPositions(i), means_saf_245(1,i), stds_saf_245(1,i), '.k', 'LineWidth', 1);
 end
 
 set(gca, 'XTick', 1:length(varNames), 'XTickLabel', varNames);
@@ -616,18 +591,9 @@ title('Southern Africa','FontSize', 6,  'FontWeight', 'bold');
  
                                        
 %
-
-means = zeros(1, 5);  
-stds = zeros(1, 5);
-
-
-means(1,:) = nanmean(eachmodel_means_585_his_saf, 2);  
-
-stds(1,:) = nanstd(eachmodel_means_585_his_saf, 0, 2);  
-%
 h10 = axes('Position', [0.39,0.07,0.11,0.08]);
 
-barHandle = bar(means', 'BarWidth', 0.6); 
+barHandle = bar(means_saf_585', 'BarWidth', 0.6); 
 hold on;
 
 barHandle.FaceColor = barColors{1}; 
@@ -635,7 +601,7 @@ barHandle.FaceAlpha = barAlpha;
 xPositions = barHandle.XEndPoints;
 
 for i = 1:5  
-    errorbar(xPositions(i), means(1,i), stds(1,i), '.k', 'LineWidth', 1);
+    errorbar(xPositions(i), means_saf_585(1,i), stds_saf_585(1,i), '.k', 'LineWidth', 1);
 end
 
 set(gca, 'XTick', 1:length(varNames), 'XTickLabel', varNames);
@@ -668,21 +634,20 @@ ax.Box = 'off';
 title('Southern Africa','FontSize', 6,  'FontWeight', 'bold');
 
                                        
-means = zeros(1, 5);  
-stds = zeros(1, 5);
-means(1,:) = nanmean(eachmodel_means_245_his_aus, 2); 
-stds(1,:) = nanstd(eachmodel_means_245_his_aus, 0, 2);  
+
+
+
 
 %
 h11 = axes('Position', [0.65,0.45,0.11,0.08]);
-barHandle = bar(means', 'BarWidth', 0.6); 
+barHandle = bar(means_aus_245', 'BarWidth', 0.6); 
 hold on;
 
 barHandle.FaceColor = barColors{1};  
 barHandle.FaceAlpha = barAlpha; 
 xPositions = barHandle.XEndPoints;
 for i = 1:5  
-    errorbar(xPositions(i), means(1,i), stds(1,i), '.k', 'LineWidth', 1);
+    errorbar(xPositions(i), means_aus_245(1,i), stds_aus_245(1,i), '.k', 'LineWidth', 1);
 end
 
 set(gca, 'XTick', 1:length(varNames), 'XTickLabel', varNames);
@@ -719,24 +684,18 @@ title('Northern Australia','FontSize', 6,  'FontWeight', 'bold');
 
                                       
 %
-means = zeros(1, 5);  
-stds = zeros(1, 5);
-
-
-means(1,:) = nanmean(eachmodel_means_585_his_aus, 2);  
-stds(1,:) = nanstd(eachmodel_means_585_his_aus, 0, 2);  
 
 %
 h12 = axes('Position', [0.65,0.07,0.1,0.08]);
 
 
-barHandle = bar(means', 'BarWidth', 0.6); 
+barHandle = bar(means_aus_585', 'BarWidth', 0.6); 
 hold on;
 barHandle.FaceColor = barColors{1};  
 barHandle.FaceAlpha = barAlpha; 
 xPositions = barHandle.XEndPoints;
 for i = 1:5     
-    errorbar(xPositions(i), means(1,i), stds(1,i), '.k', 'LineWidth', 1);
+    errorbar(xPositions(i), means_aus_585(1,i), stds_aus_585(1,i), '.k', 'LineWidth', 1);
 end
 
 set(gca, 'XTick', 1:length(varNames), 'XTickLabel', varNames);
@@ -777,24 +736,17 @@ title('Northern Australia','FontSize', 6,  'FontWeight', 'bold');
 
 
 
-means = zeros(1, 5); 
-stds = zeros(1, 5);
-
-
-means(1,:) = nanmean(eachmodel_means_245_his_ind, 2); 
-stds(1,:) = nanstd(eachmodel_means_245_his_ind, 0, 2);  
-
 
 
 h13 = axes('Position', [0.88,0.58,0.11,0.08]);
 
-barHandle = bar(means', 'BarWidth', 0.6); 
+barHandle = bar(means_ind_585', 'BarWidth', 0.6); 
 hold on;
 barHandle.FaceColor = barColors{1};  
 barHandle.FaceAlpha = barAlpha; 
 xPositions = barHandle.XEndPoints;
 for i = 1:5     
-    errorbar(xPositions(i), means(1,i), stds(1,i), '.k', 'LineWidth', 1);
+    errorbar(xPositions(i), means_ind_245(1,i), stds_ind_245(1,i), '.k', 'LineWidth', 1);
 end
 
 set(gca, 'XTick', 1:length(varNames), 'XTickLabel', varNames);
@@ -826,21 +778,16 @@ title('Southeastern Asia','FontSize', 6,  'FontWeight', 'bold');
 
 
 %
-means = zeros(1, 5);  
-stds = zeros(1, 5);
-
-means(1,:) = nanmean(eachmodel_means_585_his_ind, 2);  
-stds(1,:) = nanstd(eachmodel_means_585_his_ind, 0, 2); 
 
 
 h14 = axes('Position', [0.88,0.2,0.11,0.08]);
-barHandle = bar(means', 'BarWidth', 0.6); 
+barHandle = bar(means_ind_585', 'BarWidth', 0.6); 
 hold on;
 barHandle.FaceColor = barColors{1};  
 barHandle.FaceAlpha = barAlpha; 
 xPositions = barHandle.XEndPoints;
 for i = 1:5    
-    errorbar(xPositions(i), means(1,i), stds(1,i), '.k', 'LineWidth', 1);
+    errorbar(xPositions(i), means_ind_585(1,i), stds_ind_585(1,i), '.k', 'LineWidth', 1);
 end
 
 
@@ -875,22 +822,17 @@ ax.YAxisLocation = 'left';
 ax.Box = 'off';
 title('Southeastern Asia','FontSize', 6,  'FontWeight', 'bold');                                  
 
-means = zeros(1, 5);  
-stds = zeros(1, 5);
-
-means(1,:) = nanmean(eachmodel_means_245_his_boreal, 2);  
-stds(1,:) = nanstd(eachmodel_means_245_his_boreal, 0, 2);  
 
 
 h15 = axes('Position', [0.88,0.69,0.11,0.08]);
-barHandle = bar(means', 'BarWidth', 0.6); 
+barHandle = bar(means_nb_245', 'BarWidth', 0.6); 
 hold on;
 
 barHandle.FaceColor = barColors{1};  
 barHandle.FaceAlpha = barAlpha; 
 xPositions = barHandle.XEndPoints;
 for i = 1:5  
-    errorbar(xPositions(i), means(1,i), stds(1,i), '.k', 'LineWidth', 1);
+    errorbar(xPositions(i), means_nb_245(1,i), stds_nb_245(1,i), '.k', 'LineWidth', 1);
 end
 set(gca, 'XTick', 1:length(varNames), 'XTickLabel', varNames);
 xlim([0.5, 5.5]); 
@@ -922,24 +864,18 @@ title('Northern boreal','FontSize', 6,  'FontWeight', 'bold');
 
                                        
 
-means = zeros(1, 5);  
-stds = zeros(1, 5);
-
-means(1,:) = nanmean(eachmodel_means_585_his_boreal, 2);  
-
-stds(1,:) = nanstd(eachmodel_means_585_his_boreal, 0, 2);  
 
 %
 h16 = axes('Position', [0.88,0.31,0.11,0.08]);
 
-barHandle = bar(means', 'BarWidth', 0.6); 
+barHandle = bar(means_nb_585', 'BarWidth', 0.6); 
 hold on;
 
 barHandle.FaceColor = barColors{1};  
 barHandle.FaceAlpha = barAlpha; 
 xPositions = barHandle.XEndPoints;
 for i = 1:5    
-    errorbar(xPositions(i), means(1,i), stds(1,i), '.k', 'LineWidth', 1);
+    errorbar(xPositions(i), means_nb_585(1,i), stds_nb_585(1,i), '.k', 'LineWidth', 1);
 end
 
 set(gca, 'XTick', 1:length(varNames), 'XTickLabel', varNames);
@@ -978,21 +914,15 @@ title('Northern boreal','FontSize', 6,  'FontWeight', 'bold');
                                         
 
 
-means = zeros(1, 5);  
-stds = zeros(1, 5);
-
-
-means(1,:) = nanmean(eachmodel_means_245_his_amz, 2); 
-stds(1,:) = nanstd(eachmodel_means_245_his_amz, 0, 2);  
 
 h17 = axes('Position', [0.15,0.46,0.1,0.08]);
-barHandle = bar(means', 'BarWidth', 0.6); 
+barHandle = bar(means_amz_245', 'BarWidth', 0.6); 
 hold on;
 barHandle.FaceColor = barColors{1};  
 barHandle.FaceAlpha = barAlpha; 
 xPositions = barHandle.XEndPoints;
 for i = 1:5   
-    errorbar(xPositions(i), means(1,i), stds(1,i), '.k', 'LineWidth', 1);
+    errorbar(xPositions(i), means_amz_245(1,i), stds_amz_245(1,i), '.k', 'LineWidth', 1);
 end
 
 set(gca, 'XTick', 1:length(varNames), 'XTickLabel', varNames);
@@ -1030,16 +960,11 @@ ax.Box = 'off';
 title('Amzonia','FontSize', 6,  'FontWeight', 'bold');
 
                                        
-means = zeros(1, 5);  
-stds = zeros(1, 5);
-
-means(1,:) = nanmean(eachmodel_means_585_his_amz, 2);  
-stds(1,:) = nanstd(eachmodel_means_585_his_amz, 0, 2);  
 
 
 h18 = axes('Position', [0.15,0.08,0.1,0.08]);
 
-barHandle = bar(means', 'BarWidth', 0.6); 
+barHandle = bar(means_amz_585', 'BarWidth', 0.6); 
 hold on;
 
 
@@ -1050,7 +975,7 @@ barHandle.FaceAlpha = barAlpha;
 xPositions = barHandle.XEndPoints;
 
 for i = 1:5    
-    errorbar(xPositions(i), means(1,i), stds(1,i), '.k', 'LineWidth', 1);
+    errorbar(xPositions(i), means_amz_585(1,i), stds_amz_585(1,i), '.k', 'LineWidth', 1);
 end
 
 
