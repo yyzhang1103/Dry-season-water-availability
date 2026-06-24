@@ -1,8 +1,10 @@
 
 clear
 
-load ..\E\cmip\his_ssp_mat_data_land\figure3.mat
-
+% load figure3ab.mat
+% load figure3c.mat
+% load figure3de.mat
+load Figure3.mat
 
 % 
 figure
@@ -38,7 +40,7 @@ end
 
 
 
-full_cmap = flip(slanCM(98)); %
+full_cmap = flip(slanCM(12)); %
 
 
 ava_colormap = full_cmap;
@@ -104,30 +106,6 @@ m_grid('xaxis','off','yaxis','off', ...
     'xticklabels',{}, ...
     'yticklabels',{},...
     'linestyle','none');         
-lat_na = [140, 155];   
-lon_na = [55, 90];     
-lat_caf = [91, 110];   
-lon_caf = [175, 230];  
-lat_saf = [51, 76];    
-lon_saf = [195, 220];  
-lat_boreal = [145, 155]; 
-lon_boreal = [250, 300]; 
-lat_ind = [80, 100];     
-lon_ind = [275, 310];    
-lat_aus = [65, 77];     
-lon_aus = [292, 315];    
-lat_amz = [75, 95];    
-lon_amz = [100, 125];   
-regions = {
-    struct('name', 'NA', 'lat', lat_na, 'lon', lon_na, 'color', [0.5 0.5 0.5]);
-    struct('name', 'AMZ', 'lat', lat_amz, 'lon', lon_amz, 'color', [0.5 0.5 0.5]);
-    struct('name', 'C-AF', 'lat', lat_caf, 'lon', lon_caf, 'color', [0.5 0.5 0.5]);
-    struct('name', 'S-AF', 'lat', lat_saf, 'lon', lon_saf, 'color', [0.5 0.5 0.5]);
-    struct('name', 'Boreal', 'lat', lat_boreal, 'lon', lon_boreal, 'color', [0.5 0.5 0.5]);
-    struct('name', 'IND', 'lat', lat_ind, 'lon', lon_ind, 'color', [0.55 0.55 0.55]);
-    struct('name', 'AUS', 'lat', lat_aus, 'lon', lon_aus, 'color', [0.5 0.5 0.5]);
-};
-
 
 
 
@@ -141,7 +119,7 @@ hold on;
 
 
 
-%% 
+%
 h2 = axes('Position', [0.525,0.48,0.45,0.6]);
 title('(b) Δln(f_{585})', 'FontSize', 12, 'FontWeight', 'bold');
 
@@ -221,29 +199,7 @@ m_grid('xaxis','off','yaxis','off', ...
     'xticklabels',{}, ...
     'yticklabels',{},...
     'linestyle','none');        
-lat_na = [140, 155];  
-lon_na = [55, 90];     
-lat_caf = [91, 110];   
-lon_caf = [175, 230];  
-lat_saf = [51, 76];    
-lon_saf = [195, 220];  
-lat_boreal = [145, 155]; 
-lon_boreal = [250, 300]; 
-lat_ind = [80, 100];     
-lon_ind = [275, 310];   
-lat_aus = [65, 77];      
-lon_aus = [292, 315];    
-lat_amz = [75, 95];    
-lon_amz = [100, 125];   
-regions = {
-    struct('name', 'NA', 'lat', lat_na, 'lon', lon_na, 'color', [0.5 0.5 0.5]);
-    struct('name', 'AMZ', 'lat', lat_amz, 'lon', lon_amz, 'color', [0.5 0.5 0.5]);
-    struct('name', 'C-AF', 'lat', lat_caf, 'lon', lon_caf, 'color', [0.5 0.5 0.5]);
-    struct('name', 'S-AF', 'lat', lat_saf, 'lon', lon_saf, 'color', [0.5 0.5 0.5]);
-    struct('name', 'Boreal', 'lat', lat_boreal, 'lon', lon_boreal, 'color', [0.5 0.5 0.5]);
-    struct('name', 'IND', 'lat', lat_ind, 'lon', lon_ind, 'color', [0.55 0.55 0.55]);
-    struct('name', 'AUS', 'lat', lat_aus, 'lon', lon_aus, 'color', [0.5 0.5 0.5]);
-};
+
 
 
 
@@ -271,8 +227,8 @@ colormap(c1, ava_colormap);
 
 
 
-%%                                                    
-h3 = axes('Position', [0.056,0.175,0.43,0.3]);
+%                                                   
+h3 = axes('Position', [0.056,0.07,0.43,0.44]);
 barHandle = bar(means', 'grouped');
 hold on;
 
@@ -314,7 +270,7 @@ lgd = legend(scenarioLabels, 'Orientation', 'vertical', 'location', 'southwest',
 
 set(gca, 'FontSize', 10 , 'Box', 'on');
 set(lgd, 'Box', 'off');  
-grid on;
+grid off;
 set(gca, 'GridLineStyle', '--');  
 set(gca, 'GridAlpha', 0.5);       
 box on;
@@ -333,8 +289,8 @@ title('(c) Contributions on ΔE','FontSize', 10,  'FontWeight', 'bold');
 
 
                                                 
-%  
-h4 =axes('Position', [0.49,0.6,0.45,0.12]);
+% 
+h4 =axes('Position', [0.53,0.33,0.43,0.18]);
 start_year = 2015;
 end_year = 2100;
 years_actual = start_year:(end_year-start_year)/(length(f245_data)-1):end_year;
@@ -377,8 +333,8 @@ set(gca, 'FontSize', 8);
 title('(d) Annual {\it f}_{245} / {\it f}_{his} and Ta', 'FontSize', 10, 'FontWeight', 'bold');
 xlabel('Year');
 
-
-h5 = axes('Position', [0.49,0.44,0.45,0.12]);
+%
+h5 = axes('Position', [0.53,0.06,0.43,0.18]);
 start_year = 2015;
 end_year = 2100;
 years_actual = start_year:(end_year-start_year)/(length(f585_data)-1):end_year;
