@@ -19,18 +19,18 @@ Required MATLAB toolboxes and external packages:
 
 ## Repository structure
 
-- `code/Figure/Figure1.m`: reproduces Figure 1
-- `code/Figure/Figure2.m`: reproduces Figure 2
-- `code/Figure/Figure3.m`: reproduces Figure 3
+- `code/Figure1.m`: reproduces Figure 1
+- `code/Figure2.m`: reproduces Figure 2
+- `code/Figure3.m`: reproduces Figure 3
 - `code/code_for_analyzing_factors_affecting_soil_evaporation.m`: analyzes factors affecting soil evaporation
-- `code/data/`: expected input data
+- `data/`: expected input data
 
 
 ## How to run
 
 1. Download or prepare the required input data.
 2. Place the processed `.mat` files according to `DATA_FORMAT.md`.
-3. Add the `code/Figure/` and `code/functions/` folders to the MATLAB path.
+3. Add the `code/`folders to the MATLAB path.
 4. Run in MATLAB R2024a.
 
 
