@@ -1,9 +1,7 @@
 
 clear
 
-% load figure3ab.mat
-% load figure3c.mat
-% load figure3de.mat
+
 load Figure3.mat
 
 % 
