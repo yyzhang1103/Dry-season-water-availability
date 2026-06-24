@@ -3,8 +3,7 @@
 clear
 
 
-load Figure1.mat
-
+load('data/Figure1.mat')
 
 
 
