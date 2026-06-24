@@ -25,7 +25,8 @@ All analyses were conducted in MATLAB R2024a.
 2. Place the processed `.mat` files according to `DATA_FORMAT.md`.
 3. Add the `code/`folders to the MATLAB path.
 4. Run in MATLAB R2024a.
-
+   
+Each figure script is expected to run within a few minutes on a normal desktop computer when the processed input data are available. No non-standard hardware is required.Typical run time: Each figure script is expected to run within a few minutes on a normal desktop computer when the processed input data are available. No non-standard hardware is required.
 
 ## Reference
 Zhang Y.Y., Wang D.S., Wang-Erlandsson L., Shao W., Wei L.N., Gao M., Dong J.Z., Non-biological evaporation dominates future intensification of global dry-season water scarcity (2026)
