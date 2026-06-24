@@ -9,7 +9,6 @@ Yangyang Zhang, Dashan Wang, Lan Wang-Erlandsson, Shao Wei, Lingna Wei, Man Gao,
 
 All analyses were conducted in MATLAB R2024a.
 
-Required MATLAB version: MATLAB R2024a
 
 ## Repository structure
 
