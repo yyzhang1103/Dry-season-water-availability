@@ -23,16 +23,8 @@ Required MATLAB toolboxes and external packages:
 - `code/Figure/Figure2.m`: reproduces Figure 2
 - `code/Figure/Figure3.m`: reproduces Figure 3
 - `code/code_for_analyzing_factors_affecting_soil_evaporation.m`: analyzes factors affecting soil evaporation
-- `code/functions/`: custom helper functions
-- `DATA_FORMAT.md`: expected input data format
+- `code/data/`: expected input data
 
-## Data availability
-
-The scripts require processed CMIP6 and observational data in MATLAB `.mat` format.
-
-Due to file size and/or redistribution restrictions, input data are not included in this repository. Original data are available from their original providers, including CMIP6 and FLUXNET. Processed data will be made available upon reasonable request or deposited in a public repository upon publication.
-
-The expected input file structure is described in `DATA_FORMAT.md`.
 
 ## How to run
 
