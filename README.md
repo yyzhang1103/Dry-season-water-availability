@@ -9,13 +9,7 @@ Yangyang Zhang, Dashan Wang, Lan Wang-Erlandsson, Shao Wei, Lingna Wei, Man Gao,
 
 All analyses were conducted in MATLAB R2024a.
 
-Required MATLAB toolboxes and external packages:
-
-- MATLAB R2024a
-- M_Map toolbox
-- slanCM colormap package
-- freezeColors
-- Custom functions included in this repository, such as `cal_sig.m`
+Required MATLAB version: MATLAB R2024a
 
 ## Repository structure
 
