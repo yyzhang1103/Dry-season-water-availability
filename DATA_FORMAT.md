@@ -9,8 +9,6 @@ The processed input files should include:
 - `Figure1.mat`
 - `Figure2.mat`
 - `figure3.mat`
-- `kland_1d.mat`
-- `dry_knans.mat`
 
 ## Dimensions
 
@@ -35,17 +33,6 @@ Processed data used by `Figure2.m` to reproduce changes in evaporation, land-fra
 
 Processed data used by `Figure3.m` to reproduce changes in evaporative efficiency and soil evaporation factors.
 
-### kland_1d.mat
-
-The land mask file should contain:
-
-- `kland_1d`
-
-Non-NaN land-grid variables can be mapped back to the 180 × 360 grid using this index.
-
-### dry_knans.mat
-
-Auxiliary mask information used by the plotting scripts.
 
 ## Missing values
 
